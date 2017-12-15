@@ -22,9 +22,9 @@ function App({ children }) {
 }
 
 function NoMatch({ children, params }) {
-    return (
+  return (
 		<div>no match</div>
-    )
+  )
 }
 
 function Home({ ...props }) {
@@ -45,7 +45,7 @@ function Users({ children, params }) {
 }
 
 function User({ params }) {
-    return <h1>{JSON.stringify(params)}</h1>
+  return <h1>{JSON.stringify(params)}</h1>
 }
 
 const routes = (
