@@ -1,7 +1,5 @@
-// inferno module
-import {render} from 'inferno';
-
-// routing modules
+import { render } from 'inferno';
+import VersionComponent from './VersionComponent';
 import { Router, Link, Route, IndexRoute } from 'inferno-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
@@ -10,10 +8,15 @@ function App({ children }) {
     return (
 		<div>
 			<h1>Application</h1>
+			<Link to="/">Home</Link>
+			<br />
 			<Link to="/users">User list</Link>
 			<br />
 			<Link to="/users/user/tester">Tester's page</Link>
-            {children}
+      
+      {children}
+
+      <VersionComponent />
 		</div>
     )
 }
@@ -24,21 +27,21 @@ function NoMatch({ children, params }) {
     )
 }
 
-function Home({ children }) {
-    return (
-		<div>home</div>
-    )
+function Home({ ...props }) {
+	console.log(props.moo);
+  return (
+		<div>home: {props.moo}</div>
+  )
 }
 
 // `children` in this case will be the `User` component
 function Users({ children, params }) {
-
-    return (
+  return (
 		<div>
 			<h2>user list</h2>
-            {children}
+      {children}
 		</div>
-    )
+  )
 }
 
 function User({ params }) {
@@ -48,7 +51,9 @@ function User({ params }) {
 const routes = (
 	<Router history={browserHistory}>
 		<Route component={App}>
-			<IndexRoute component={Home} />
+			<IndexRoute component={(props) => {
+	      return <Home { ...props } moo='cow' />
+	    }} />
 			<Route path="/users" component={Users}>
 				<Route path="/user/:username" component={User} />
 			</Route>
@@ -57,4 +62,5 @@ const routes = (
 	</Router>
 );
 
+require('inferno-devtools');
 render(routes, document.getElementById('app'));

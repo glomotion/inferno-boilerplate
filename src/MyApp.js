@@ -3,6 +3,7 @@ export default function MyApp({ children }) {
         <div>
             <h1>Inferno Boilerplate</h1>
             { children }
+            
         </div>
     );
 }

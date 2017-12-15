@@ -7,7 +7,7 @@ function showVersion() {
 export default function VersionComponent() {
 	return (
 		<div>
-			<p>This is an Inferno Boilerplate example using <em>Inferno { version }</em>.</p>
+			<p>This is an Inferno Booilerplate example using <em>Inferno { version }</em>.</p>
 			<button onClick={ showVersion }>Show version</button>
 		</div>
 	);

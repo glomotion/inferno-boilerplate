@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
+	devtool: 'source-map',
 	entry: './src/index.js',
 	output: {
         path: __dirname + '/public',
@@ -14,6 +15,7 @@ module.exports = {
 		}]
 	},
 	devServer: {
+		open: true,
 		contentBase: './',
 		port: 8080,
 		noInfo: false,
